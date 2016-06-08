@@ -1,0 +1,209 @@
+C51 COMPILER V9.01   MAIN                                                                  06/08/2016 22:40:38 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN MAIN.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE MAIN.C LARGE BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /**********************RC522实验开发板例程************************
+   2          *  CPU:STC89C52RC
+   3          *  晶振:11.0592MHZ
+   4          ------------------------------------------------*/
+   5          #include <reg52.h>
+   6          #include  <STDIO.H>
+   7          #include <string.h>
+   8          #include "main.h"
+   9          #include "mfrc522.h"
+  10          
+  11          int re_data;
+  12          unsigned char Receive[];
+  13          unsigned char UART_buff;
+  14          bit New_rec = 0, Send_ed = 1, Money = 0;
+  15          
+  16          unsigned char g_ucTempbuf[20];
+  17          //unsigned int dcopyArrayInt[10];                       
+  18          void delay1(unsigned int z)
+  19          {
+  20   1              unsigned int x,y;
+  21   1              for(x=z;x>0;x--)
+  22   1              for(y=110;y>0;y--);     
+  23   1      }  
+  24          
+  25          
+  26          int array_cmp(unsigned char *s1, unsigned int *s2)
+  27          {
+  28   1      
+  29   1          int i;
+  30   1          unsigned int a,b;
+  31   1          for(i = 0; i < 4; i ++){
+  32   2      
+  33   2                      a = s1[i];
+  34   2                      b = s2[i];
+  35   2                      //printf("i is %d  ----  a is : %x --- b is :%x \n",i,a,b);
+  36   2              if(a > b) return 1;
+  37   2              else if(a < b) return -1;
+  38   2              }
+  39   1          
+  40   1          //运行到这里，表示所有4ge判断元素均相等。
+  41   1          return 0;
+  42   1      
+  43   1      
+  44   1      }
+  45          
+  46          
+  47          
+  48          
+  49          
+  50          
+  51          
+  52          void main( )
+  53          {    
+  54   1           unsigned char status,i;
+  55   1               unsigned int str[4]={0xD5,0x5E,0x2A,0xD9};
+C51 COMPILER V9.01   MAIN                                                                  06/08/2016 22:40:38 PAGE 2   
+
+  56   1               unsigned int temp,j;
+  57   1                
+  58   1           InitializeSystem( );
+  59   1           PcdReset();
+  60   1           PcdAntennaOff(); 
+  61   1           PcdAntennaOn(); 
+  62   1      
+  63   1           while ( 1 )
+  64   1           {   
+  65   2      
+  66   2      
+  67   2      //              if(RI == 1) {  //如果收到.
+  68   2      //      
+  69   2      //            RI = 0;      //清除标志.
+  70   2      //      
+  71   2      //            UART_buff = SBUF;  //接收.
+  72   2      //      
+  73   2      //                printf("rec id %x",UART_buff);
+  74   2      //      
+  75   2      //          }
+  76   2                              
+  77   2      
+  78   2                              
+  79   2      
+  80   2      
+  81   2               status = PcdRequest(PICC_REQALL, g_ucTempbuf);//寻卡
+  82   2               if (status != MI_OK)
+  83   2               {    
+  84   3                   InitializeSystem( );
+  85   3                           PcdReset();
+  86   3                           PcdAntennaOff(); 
+  87   3                           PcdAntennaOn(); 
+  88   3                           continue;
+  89   3               }
+  90   2                                   
+  91   2                              
+  92   2               status = PcdAnticoll(g_ucTempbuf);//防冲撞
+  93   2               if (status != MI_OK)
+  94   2               {    continue;    }
+  95   2      
+  96   2      
+  97   2              //D55E2AD9
+  98   2                      
+  99   2      //              printf("开始: %d \n",array_cmp(g_ucTempbuf,str));
+ 100   2      
+ 101   2      
+ 102   2                      ////////以下为超级终端打印出的内容////////////////////////
+ 103   2      //              if(array_cmp(g_ucTempbuf,str)==0){
+ 104   2      //
+ 105   2      //                      printf("卡号是 ：");
+ 106   2                                      for(i=0;i<4;i++)
+ 107   2                                      {
+ 108   3                                              temp=g_ucTempbuf[i];
+ 109   3                                              printf("%X-",temp);
+ 110   3                                              
+ 111   3                              }
+ 112   2      //                      printf("\n");
+ 113   2      //              }
+ 114   2      //              else{
+ 115   2      //                      printf("卡号错误 错误的卡号是 ：");
+ 116   2      //                              for(i=0;i<4;i++)
+ 117   2      //                              {
+C51 COMPILER V9.01   MAIN                                                                  06/08/2016 22:40:38 PAGE 3   
+
+ 118   2      //                                      temp=g_ucTempbuf[i];
+ 119   2      //                                      printf("%X-",temp);
+ 120   2      //                                      
+ 121   2      //                      }
+ 122   2      //                      printf("\n");
+ 123   2      //              }
+ 124   2      
+ 125   2                      ////////////////////////////////////////////////////////
+ 126   2      
+ 127   2                      LED_GREEN = 0;
+ 128   2                  for(i=0;i<250;i++)//先输出一种频率的声音
+ 129   2              {
+ 130   3               for(j=0;j<80;j++);
+ 131   3               Speaker=~Speaker;
+ 132   3              }
+ 133   2                      delay1(100);
+ 134   2                      LED_GREEN = 1;
+ 135   2                      delay1(100);
+ 136   2                      LED_GREEN = 0;
+ 137   2                      delay1(200);
+ 138   2                      LED_GREEN = 1;
+ 139   2                      
+ 140   2                                                                               
+ 141   2                      PcdHalt();
+ 142   2      
+ 143   2          }
+ 144   1      }
+ 145          
+ 146          
+ 147          /////////////////////////////////////////////////////////////////////
+ 148          //系统初始化
+ 149          /////////////////////////////////////////////////////////////////////
+ 150          void InitializeSystem()
+ 151          {
+ 152   1      /*      P0M1 = 0x0; P0M2 = 0x0;
+ 153   1              P1M1 = 0x0;     P1M2 = 0x0;                      
+ 154   1              P3M1 = 0x0; P3M2 = 0xFF; 
+ 155   1      */      P0 = 0xFF; P1 = 0xFF; P3 = 0xFF;P2 = 0xFF;
+ 156   1      
+ 157   1              TMOD=0x21;                 //设T0为方式1，GATE=1；
+ 158   1              SCON=0x50;
+ 159   1              TH1=0xF4;          //波特率为2400bps
+ 160   1              TL1=0xF4;
+ 161   1              TH0=0;
+ 162   1              TL0=0; 
+ 163   1              TR0=1;  
+ 164   1              ET0=1;             //允许T0中断
+ 165   1              TR1=1;                     //开启定时器
+ 166   1              TI=1;
+ 167   1              EA=1;                           //开启总中断
+ 168   1              
+ 169   1              ES = 1;
+ 170   1              RI = 1;
+ 171   1      
+ 172   1       
+ 173   1      }
+ 174          
+ 175          
+ 176          
+ 177          
+ 178             
+ 179            
+C51 COMPILER V9.01   MAIN                                                                  06/08/2016 22:40:38 PAGE 4   
+
+ 180          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    406    ----
+   CONSTANT SIZE    =     12    ----
+   XDATA SIZE       =     23      20
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      3    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
