@@ -100,42 +100,45 @@ void main( )
 
 
 		////////以下为超级终端打印出的内容////////////////////////
-//		if(array_cmp(g_ucTempbuf,str)==0){
-//
-//			printf("卡号是 ：");
+		if(array_cmp(g_ucTempbuf,str)==0){
+
+	   		LED_GREEN = 0;
+			delay1(100);
+			LED_GREEN = 1;
+			delay1(100);
+			LED_GREEN = 0;
+			delay1(200);
+			LED_GREEN = 1;
+
+			printf("卡号是 ：");
 				for(i=0;i<4;i++)
 				{
 					temp=g_ucTempbuf[i];
-					printf("%X-",temp);
+					printf("%X",temp);
 					
 	        	}
-//			printf("\n");
-//		}
-//		else{
-//			printf("卡号错误 错误的卡号是 ：");
-//				for(i=0;i<4;i++)
-//				{
-//					temp=g_ucTempbuf[i];
-//					printf("%X-",temp);
-//					
-//	        	}
-//			printf("\n");
-//		}
+			printf("\n");
+		}
+		else{
+			printf("卡号错误 错误的卡号是 ：");
+				for(i=0;i<4;i++)
+				{
+					temp=g_ucTempbuf[i];
+					printf("%X",temp);
+					
+	        	}
+			printf("\n");
+		}
 
 		////////////////////////////////////////////////////////
 
-		LED_GREEN = 0;
+
 	    for(i=0;i<250;i++)//先输出一种频率的声音
         {
          for(j=0;j<80;j++);
          Speaker=~Speaker;
         }
-		delay1(100);
-		LED_GREEN = 1;
-		delay1(100);
-		LED_GREEN = 0;
-		delay1(200);
-		LED_GREEN = 1;
+
 		
 						 		         
 		PcdHalt();

@@ -130,23 +130,6 @@
           <Name>-S4 -B11520 -O1792 -E3 -F0 -G128</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
-      <Breakpoint>
-        <Bp>
-          <Number>0</Number>
-          <Type>0</Type>
-          <LineNumber>91</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>0</Address>
-          <ByteObject>0</ByteObject>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
-          <Filename>MAIN.C</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-      </Breakpoint>
       <DebugFlag>
         <trace>0</trace>
         <periodic>0</periodic>
@@ -189,10 +172,10 @@
       <FileType>1</FileType>
       <tvExp>1</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>115</ColumnNumber>
+      <ColumnNumber>110</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>55</TopLine>
-      <CurrentLine>57</CurrentLine>
+      <TopLine>115</TopLine>
+      <CurrentLine>119</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\MAIN.C</PathWithFileName>
       <FilenameWithoutPath>MAIN.C</FilenameWithoutPath>
@@ -252,35 +235,9 @@
   </Group>
 
   <AlienFiles>
-    <PathWithFilename>C:\KEIL\C51\INC\STDIO.H</PathWithFilename>
-    <TopLine>16</TopLine>
-    <CurrentLine>16</CurrentLine>
-    <Constant>0</Constant>
-    <WindowPosition>
-      <length>0</length>
-      <flags>0</flags>
-      <showCmd>0</showCmd>
-      <MinPosition>
-        <xPos>0</xPos>
-        <yPos>0</yPos>
-      </MinPosition>
-      <MaxPosition>
-        <xPos>0</xPos>
-        <yPos>0</yPos>
-      </MaxPosition>
-      <NormalPosition>
-        <Top>0</Top>
-        <Left>0</Left>
-        <Right>0</Right>
-        <Bottom>0</Bottom>
-      </NormalPosition>
-    </WindowPosition>
-  </AlienFiles>
-
-  <AlienFiles>
-    <PathWithFilename>C:\KEIL\C51\INC\STRING.H</PathWithFilename>
-    <TopLine>1</TopLine>
-    <CurrentLine>1</CurrentLine>
+    <PathWithFilename>C:\KEIL\C51\INC\REG52.H</PathWithFilename>
+    <TopLine>93</TopLine>
+    <CurrentLine>93</CurrentLine>
     <Constant>0</Constant>
     <WindowPosition>
       <length>0</length>
@@ -330,9 +287,35 @@
   </AlienFiles>
 
   <AlienFiles>
-    <PathWithFilename>C:\KEIL\C51\INC\REG52.H</PathWithFilename>
-    <TopLine>93</TopLine>
-    <CurrentLine>93</CurrentLine>
+    <PathWithFilename>C:\KEIL\C51\INC\STRING.H</PathWithFilename>
+    <TopLine>1</TopLine>
+    <CurrentLine>1</CurrentLine>
+    <Constant>0</Constant>
+    <WindowPosition>
+      <length>0</length>
+      <flags>0</flags>
+      <showCmd>0</showCmd>
+      <MinPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MinPosition>
+      <MaxPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MaxPosition>
+      <NormalPosition>
+        <Top>0</Top>
+        <Left>0</Left>
+        <Right>0</Right>
+        <Bottom>0</Bottom>
+      </NormalPosition>
+    </WindowPosition>
+  </AlienFiles>
+
+  <AlienFiles>
+    <PathWithFilename>C:\KEIL\C51\INC\STDIO.H</PathWithFilename>
+    <TopLine>16</TopLine>
+    <CurrentLine>16</CurrentLine>
     <Constant>0</Constant>
     <WindowPosition>
       <length>0</length>
@@ -1700,9 +1683,9 @@
       <Documents>
         <Doc>
           <Name>.\MAIN.C</Name>
-          <ColumnNumber>115</ColumnNumber>
-          <TopLine>55</TopLine>
-          <CurrentLine>57</CurrentLine>
+          <ColumnNumber>110</ColumnNumber>
+          <TopLine>115</TopLine>
+          <CurrentLine>119</CurrentLine>
         </Doc>
         <Doc>
           <Name>C:\KEIL\C51\INC\STDIO.H</Name>

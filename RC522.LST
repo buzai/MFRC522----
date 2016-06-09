@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   RC522                                                                 06/08/2016 22:40:38 PAGE 1   
+C51 COMPILER V9.01   RC522                                                                 06/09/2016 09:44:17 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE RC522
@@ -62,7 +62,7 @@ line level    source
   53   2              }
   54   1         
   55   1         return status;
-C51 COMPILER V9.01   RC522                                                                 06/08/2016 22:40:38 PAGE 2   
+C51 COMPILER V9.01   RC522                                                                 06/09/2016 09:44:17 PAGE 2   
 
   56   1      }
   57          
@@ -126,7 +126,7 @@ line level    source
  115   2          }
  116   1          CalulateCRC(ucComMF522Buf,7,&ucComMF522Buf[7]);
  117   1        
-C51 COMPILER V9.01   RC522                                                                 06/08/2016 22:40:38 PAGE 3   
+C51 COMPILER V9.01   RC522                                                                 06/09/2016 09:44:17 PAGE 3   
 
  118   1          ClearBitMask(Status2Reg,0x08);
  119   1      
@@ -190,7 +190,7 @@ line level    source
  177   1         
  178   1          status = PcdComMF522(PCD_TRANSCEIVE,ucComMF522Buf,4,ucComMF522Buf,&unLen);
  179   1          if ((status == MI_OK) && (unLen == 0x90))
-C51 COMPILER V9.01   RC522                                                                 06/08/2016 22:40:38 PAGE 4   
+C51 COMPILER V9.01   RC522                                                                 06/09/2016 09:44:17 PAGE 4   
 
  180   1       //   {   memcpy(pData, ucComMF522Buf, 16);   }
  181   1          {
@@ -254,7 +254,7 @@ line level    source
  239   1          unsigned int  unLen;
  240   1          unsigned char i,ucComMF522Buf[MAXRLEN]; 
  241   1          
-C51 COMPILER V9.01   RC522                                                                 06/08/2016 22:40:38 PAGE 5   
+C51 COMPILER V9.01   RC522                                                                 06/09/2016 09:44:17 PAGE 5   
 
  242   1          ucComMF522Buf[0] = dd_mode;
  243   1          ucComMF522Buf[1] = addr;
@@ -318,7 +318,7 @@ line level    source
  301   2              ucComMF522Buf[1] = 0;
  302   2              ucComMF522Buf[2] = 0;
  303   2              ucComMF522Buf[3] = 0;
-C51 COMPILER V9.01   RC522                                                                 06/08/2016 22:40:38 PAGE 6   
+C51 COMPILER V9.01   RC522                                                                 06/09/2016 09:44:17 PAGE 6   
 
  304   2              CalulateCRC(ucComMF522Buf,4,&ucComMF522Buf[4]);
  305   2       
@@ -382,7 +382,7 @@ line level    source
  363   2              i--;
  364   2          }
  365   1          while ((i!=0) && !(n&0x04));
-C51 COMPILER V9.01   RC522                                                                 06/08/2016 22:40:38 PAGE 7   
+C51 COMPILER V9.01   RC522                                                                 06/09/2016 09:44:17 PAGE 7   
 
  366   1          pOutData[0] = ReadRawRC(CRCResultRegL);
  367   1          pOutData[1] = ReadRawRC(CRCResultRegM);
@@ -446,7 +446,7 @@ line level    source
  425   1           for(i=8;i>0;i--)
  426   1           {
  427   2               MF522_SCK = 1;
-C51 COMPILER V9.01   RC522                                                                 06/08/2016 22:40:38 PAGE 8   
+C51 COMPILER V9.01   RC522                                                                 06/09/2016 09:44:17 PAGE 8   
 
  428   2               ucResult <<= 1;
  429   2               ucResult|=(bit)MF522_MISO;
@@ -510,7 +510,7 @@ line level    source
  487          void ClearBitMask(unsigned char reg,unsigned char mask)  
  488          {
  489   1          char tmp = 0x0;
-C51 COMPILER V9.01   RC522                                                                 06/08/2016 22:40:38 PAGE 9   
+C51 COMPILER V9.01   RC522                                                                 06/09/2016 09:44:17 PAGE 9   
 
  490   1          tmp = ReadRawRC(reg);
  491   1          WriteRawRC(reg, tmp & ~mask);  // clear bit mask
@@ -574,7 +574,7 @@ line level    source
  549   1                    
  550   1          if (i!=0)
  551   1          {    
-C51 COMPILER V9.01   RC522                                                                 06/08/2016 22:40:38 PAGE 10  
+C51 COMPILER V9.01   RC522                                                                 06/09/2016 09:44:17 PAGE 10  
 
  552   2               if(!(ReadRawRC(ErrorReg)&0x1B))
  553   2               {
@@ -638,7 +638,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----     238
    PDATA SIZE       =   ----    ----
-C51 COMPILER V9.01   RC522                                                                 06/08/2016 22:40:38 PAGE 11  
+C51 COMPILER V9.01   RC522                                                                 06/09/2016 09:44:17 PAGE 11  
 
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
